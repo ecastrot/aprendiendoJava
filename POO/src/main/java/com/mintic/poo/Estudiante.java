@@ -18,9 +18,12 @@ public class Estudiante {
     private String carrera;
     private int[] notas = new int[5];
     private int asistencias = 1;
+    
+    private int contadorNotas;
 
     public Estudiante() {
-        
+        this.asistencias = 10;
+        this.carrera = "Ing. en sistemas";
     }
     
     public Estudiante(String documento, String nombre, String apellido) {
@@ -43,7 +46,20 @@ public class Estudiante {
     }
     
     public void agregarNota(int nota){
-        this.notas[0] = nota;
+        if (contadorNotas < 5) {
+            this.notas[contadorNotas] = nota;
+            contadorNotas++;    
+        }else{
+            throw new RuntimeException("Ingresaste mas de cinco notas");
+        }
+    }
+    
+    public float calcularPromedio(boolean parcial){
+        float sumaNotas = 0;
+        for (int i = 0; i < this.notas.length; i++) {
+            sumaNotas = sumaNotas + this.notas[i];
+        }
+        return sumaNotas / this.notas.length;
     }
     
     public String getDocumento() {
