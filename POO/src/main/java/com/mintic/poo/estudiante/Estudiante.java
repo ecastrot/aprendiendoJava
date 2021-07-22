@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mintic.poo;
+package com.mintic.poo.estudiante;
+
+import com.mintic.poo.academia.Curso;
 
 /**
  * Controla la información de los estudiantes de la instución
@@ -15,15 +17,13 @@ public class Estudiante {
     private String nombre;
     private String apellido;
     private int edad;
-    private String carrera;
+    private Curso curso;
     private int[] notas = new int[5];
-    private int asistencias = 1;
     
     private int contadorNotas;
 
     public Estudiante() {
-        this.asistencias = 10;
-        this.carrera = "Ing. en sistemas";
+
     }
     
     public Estudiante(String documento, String nombre, String apellido) {
@@ -37,12 +37,14 @@ public class Estudiante {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
-        this.carrera = carrera;
-        this.asistencias = asistencias;
     }
     
     public void asistirAClase(){
-        this.asistencias++;
+//        this.asistencias++;
+    }
+    
+    public void matricularCurso(Curso curso){
+        this.curso = curso;
     }
     
     public void agregarNota(int nota){
@@ -54,13 +56,33 @@ public class Estudiante {
         }
     }
     
-    public float calcularPromedio(boolean parcial){
+    public float calcularPromedio2(boolean parcial){
         float sumaNotas = 0;
         for (int i = 0; i < this.notas.length; i++) {
             sumaNotas = sumaNotas + this.notas[i];
         }
         return sumaNotas / this.notas.length;
     }
+    
+    public float calcularPromedio(boolean parcial){
+        float sumaNotas=0;
+        float prom = 0;
+        int noNotasParaPromedio;
+//        if(parcial==true){
+//           noNotasParaPromedio = contadorNotas;
+//        }else{
+//           noNotasParaPromedio = this.notas.length;
+//           //otras cosas
+//        }
+        //Operador ternario
+        noNotasParaPromedio = (parcial==true) ? this.contadorNotas : this.notas.length;
+        for(int i=0;i<noNotasParaPromedio;i++){
+            sumaNotas+=this.notas[i];
+        }
+        prom =sumaNotas/noNotasParaPromedio;
+        return prom;
+    }
+
     
     public String getDocumento() {
         return documento;
@@ -90,14 +112,6 @@ public class Estudiante {
         this.edad = edad;
     }
 
-    public String getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(String carrera) {
-        this.carrera = carrera;
-    }
-
     public int[] getNotas() {
         return notas;
     }
@@ -106,17 +120,5 @@ public class Estudiante {
         this.notas = notas;
     }
 
-    public int getAsistencias() {
-        return asistencias;
-    }
-
-    public void setAsistencias(int asistencias) {
-        this.asistencias = asistencias;
-    }
-    
-    
-    
-    
-    
 }
 

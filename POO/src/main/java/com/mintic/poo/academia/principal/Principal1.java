@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mintic.poo;
+package com.mintic.poo.academia.principal;
+
+import com.mintic.poo.estudiante.Estudiante;
 
 /**
  *
  * @author ecastrot
  */
-public class Principal {
+public class Principal1 {
 
     /**
      * @param args the command line arguments
@@ -26,18 +28,18 @@ public class Principal {
         Estudiante diana3 = new Estudiante("Juan", "Perez", "245457847");
         
         Estudiante diana = new Estudiante("165758787", "Diana", "Aristizabal");
-        diana.setCarrera("Ingenieria Agropecuaria");
+//        diana.setCarrera("Ingenieria Agropecuaria");
         System.out.println("El nombre del estudiante es: " + diana.getNombreCompleto());
-        System.out.println("Asistencias = " + diana.getAsistencias());
+//        System.out.println("Asistencias = " + diana.getAsistencias());
         diana.asistirAClase();
-        System.out.println("Asistencias = " + diana.getAsistencias());
+//        System.out.println("Asistencias = " + diana.getAsistencias());
         diana.agregarNota(5);
         diana.agregarNota(4);
-        diana.agregarNota(3);
-        diana.agregarNota(4);
-        diana.agregarNota(5);
+//        diana.agregarNota(3);
+//        diana.agregarNota(4);
+//        diana.agregarNota(5);
 //        diana.agregarNota(6);
-        float resultado = diana.calcularPromedio(true);
+        float resultado = diana.calcularPromedio(false);
         System.out.println("El promedio de las notas es: " + resultado);
       
     }
