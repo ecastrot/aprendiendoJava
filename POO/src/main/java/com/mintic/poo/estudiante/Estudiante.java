@@ -6,6 +6,8 @@
 package com.mintic.poo.estudiante;
 
 import com.mintic.poo.academia.Curso;
+import com.mintic.poo.academia.Materia;
+import java.util.Date;
 
 /**
  * Controla la información de los estudiantes de la instución
@@ -39,8 +41,9 @@ public class Estudiante {
         this.edad = edad;
     }
     
-    public void asistirAClase(){
-//        this.asistencias++;
+    public Asistencia asistirAClase(Materia materia) {
+        Asistencia asistencia = new Asistencia(new Date(), this, materia);
+        return asistencia;
     }
     
     public void matricularCurso(Curso curso){

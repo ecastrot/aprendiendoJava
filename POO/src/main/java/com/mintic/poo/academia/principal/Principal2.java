@@ -20,9 +20,7 @@ public class Principal2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
+    public static void main(String[] args) {      
         Curso programacion = new Curso();
         programacion.setCodigo(100);
         programacion.setDuracion(180);
@@ -36,8 +34,14 @@ public class Principal2 {
         Estudiante diana = new Estudiante("15245454", "Diana", "Marulanda");
         diana.matricularCurso(programacion);
         
-        Date fechaActual = new Date();
-        Asistencia asistencia = new Asistencia(fechaActual, diana, poo);
+//        Asistencia asistencia = diana.asistirAClase(poo);
+        Asistencia asistencia = Asistencia.asistirAClase(diana, poo);
+        
+//        System.out.println("El estudiante: " + diana.getNombreCompleto() 
+//                + " asisitió a la materia: " + asistencia.getMateria().getNombre() 
+//                + " el día: " + asistencia.getFecha());
+
+        System.out.println("La asistencia fue: " + asistencia);
     }
     
 }

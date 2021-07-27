@@ -23,24 +23,27 @@ public class Principal1 {
 //        diana.setEdad(10);
 //        diana.setCarrera("Ingenieria en Sistemas");
 
-        Estudiante diana2 = new Estudiante();
-
-        Estudiante diana3 = new Estudiante("Juan", "Perez", "245457847");
-        
-        Estudiante diana = new Estudiante("165758787", "Diana", "Aristizabal");
-//        diana.setCarrera("Ingenieria Agropecuaria");
-        System.out.println("El nombre del estudiante es: " + diana.getNombreCompleto());
-//        System.out.println("Asistencias = " + diana.getAsistencias());
-        diana.asistirAClase();
-//        System.out.println("Asistencias = " + diana.getAsistencias());
-        diana.agregarNota(5);
-        diana.agregarNota(4);
-//        diana.agregarNota(3);
-//        diana.agregarNota(4);
+//        Estudiante diana2 = new Estudiante();
+//
+//        Estudiante diana3 = new Estudiante("Juan", "Perez", "245457847");
+//        
+//        Estudiante diana = new Estudiante("165758787", "Diana", "Aristizabal");
+////        diana.setCarrera("Ingenieria Agropecuaria");
+//        System.out.println("El nombre del estudiante es: " + diana.getNombreCompleto());
+////        System.out.println("Asistencias = " + diana.getAsistencias());
+//        diana.asistirAClase();
+////        System.out.println("Asistencias = " + diana.getAsistencias());
 //        diana.agregarNota(5);
-//        diana.agregarNota(6);
-        float resultado = diana.calcularPromedio(false);
-        System.out.println("El promedio de las notas es: " + resultado);
+//        diana.agregarNota(4);
+////        diana.agregarNota(3);
+////        diana.agregarNota(4);
+////        diana.agregarNota(5);
+////        diana.agregarNota(6);
+//        float resultado = diana.calcularPromedio(false);
+//        System.out.println("El promedio de las notas es: " + resultado);
+
+
+        
       
     }
     
