@@ -11,6 +11,7 @@ import com.mintic.poo.herencia.personas.Persona;
 import com.mintic.poo.herencia.vehiculos.Carro;
 import com.mintic.poo.herencia.vehiculos.Moto;
 import com.mintic.poo.herencia.vehiculos.Vehiculo;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.Date;
 
 /**
@@ -26,7 +27,12 @@ public class Domicilios {
         
         Persona persona = new Persona();
         
+        // Ligadura dinámica
+        Persona personaJuan = new Empleado("123", "Jhon", "Ospina", "Ing", new Date());
         
+        
+        String nombreMostrar = personaJuan.imprimirNombre();
+        System.out.println("Nombre de Juan > " + nombreMostrar);
         
         Empleado empleado = new Empleado("123", "Daniela", "Hicapie", "Ing", new Date());
         Cliente cliente = new Cliente("456", "Raul", "Florez");
@@ -68,6 +74,20 @@ public class Domicilios {
         cliente.solicitarDomicilio();
         cliente.solicitarDomicilio();
         System.out.println("Clasificacion 3 " + cliente.getClasificacion());
+        
+        int resul = sumar(1, 2, 5);
+        System.out.println("La suma es: " + resul);
+        
+        resul = sumar(1,2,3);
+        resul = sumar("asdf", 1, 2, 3);    
+    }
+ 
+    public static int sumar(int num1, int num2, int num3) {
+        return num1+num2+num3;
+    }
+    
+    public static int sumar(String algunaCosa, int num1, int num2, int num3) {
+        return num1+num2+num3;
     }
     
 }

@@ -49,7 +49,7 @@ public class Cliente extends Persona{
 
     @Override
     public String imprimirNombre() {
-        return super.nombre + " " + super.apellidos;
+        return this.nombre + " " + this.apellidos;
     }
 
     
