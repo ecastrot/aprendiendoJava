@@ -40,7 +40,13 @@ public class Cantante {
         this.discos = discos;
     }
    
-   
+    public int contarVentas() {
+        int noVentas = 0;
+        for (Disco disco : this.discos) {
+            noVentas += disco.getNoVentas();
+        }
+        return noVentas;
+    }
    
    public Integer noVentasEnSusDiscos(){
       // Recorrer la lista de discos y sumar la cantidad de ventas. 

@@ -58,13 +58,9 @@ public class Colecciones {
         cantantes.add(shakira4);
         
         String nombreCantanteABuscar = "";
-        Cantante cantanteEncontrado = null;
-        for (Cantante cantante : cantantes) {
-            // Buscar hasta encontrar el nombre del cantante
-            cantanteEncontrado = cantante;
-        }
+        Cantante cantanteEncontrado = buscarCantante(cantantes, nombreCantanteABuscar);
         if (cantanteEncontrado != null){
-            Integer noVentas = cantanteEncontrado.noVentasEnSusDiscos();    
+            Integer noVentas = cantanteEncontrado.contarVentas();    
             System.out.println("El no ventas es: " + noVentas);
         }else{
             System.out.println("Ese cantante no existe");
@@ -72,6 +68,15 @@ public class Colecciones {
         
         Disco elPrimerDiscoDelCantanteNo3DeLaLista = cantantes.get(2).getDiscos().get(0);
         System.out.println("El disco es: " + elPrimerDiscoDelCantanteNo3DeLaLista.getNombre());
+    }
+
+    private static Cantante buscarCantante(ArrayList<Cantante> cantantes, String nombreCantante) {
+        for (Cantante cantante : cantantes) {
+            if (nombreCantante.equalsIgnoreCase(cantante.getNombre())){
+                return cantante;
+            }
+        }
+        return null;
     }
     
 }
