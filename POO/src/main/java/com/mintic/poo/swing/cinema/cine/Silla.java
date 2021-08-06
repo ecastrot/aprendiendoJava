@@ -5,6 +5,8 @@
  */
 package com.mintic.poo.swing.cinema.cine;
 
+import java.util.Calendar;
+
 /**
  *
  * @author ecastrot
@@ -21,8 +23,8 @@ public class Silla implements ICobro {
         this.estado = estado;
     }
     
-    public void cambiarEstado(String estado){
-        // TODO
+    public void cambiarEstado(Estado estado){
+        this.estado = estado;
     }
     
     public int getNo() {
@@ -39,7 +41,11 @@ public class Silla implements ICobro {
 
     @Override
     public double calcularPrecio(int dia) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        boolean estaEnSemana = dia >= Calendar.MONDAY && dia <= Calendar.FRIDAY;
+        if (dia >= Calendar.MONDAY && dia <= Calendar.FRIDAY){
+           return 5000; 
+        }
+        return 7000;
     }
 
 }

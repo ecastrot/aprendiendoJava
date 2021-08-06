@@ -14,6 +14,14 @@ public class SillaPreferencial extends Silla{
     public SillaPreferencial(int no, String imagen, Estado estado) {
         super(no, imagen, estado);
     }
+
+    @Override
+    public double calcularPrecio(int dia) {
+        double precio = super.calcularPrecio(dia);
+        return precio * 1.5;
+    }
+    
+    
     
 }
  
