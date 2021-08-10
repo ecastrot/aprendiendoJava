@@ -6,6 +6,7 @@
 package com.mintic.poo.swing.cinema.cine.ventas;
 
 import com.mintic.poo.swing.cinema.cine.Silla;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,10 +14,10 @@ import java.util.Date;
  * @author ecastrot
  */
 public class Venta {
-    
-    private Date fecha; 
+
+    private Date fecha;
     private double valorVenta;
-    private Cliente cliente; 
+    private Cliente cliente;
     private Silla silla;
 
     public Venta(Date fecha) {
@@ -54,7 +55,11 @@ public class Venta {
     public void setSilla(Silla silla) {
         this.silla = silla;
     }
-    
-    
-    
+
+    public Object[] getDatosComoFila() {
+        String fechaFormateada = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(this.fecha);
+        Object[] fila = {fechaFormateada, this.cliente.getNombre(), this.silla, this.valorVenta};
+        return fila;
+    }
+
 }

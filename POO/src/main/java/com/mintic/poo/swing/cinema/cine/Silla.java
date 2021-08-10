@@ -48,4 +48,11 @@ public class Silla implements ICobro {
         return 7000;
     }
 
+    @Override
+    public String toString() {
+        return "Silla #" + this.no;
+    }
+    
+    
+
 }

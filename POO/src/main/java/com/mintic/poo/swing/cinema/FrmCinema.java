@@ -23,6 +23,7 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -83,7 +84,6 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
         btnS9 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnVender2 = new javax.swing.JButton();
-        btnVender3 = new javax.swing.JButton();
         btnVender4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -100,6 +100,11 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
         txtNombre = new javax.swing.JTextField();
         btnVender = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        btnTest = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVentas = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
 
         btnVender1.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         btnVender1.setText("Completar Venta");
@@ -208,14 +213,6 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        btnVender3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        btnVender3.setText("Cambiar Función");
-        btnVender3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVender3ActionPerformed(evt);
-            }
-        });
-
         btnVender4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnVender4.setText("Cambiar Función");
         btnVender4.addActionListener(new java.awt.event.ActionListener() {
@@ -251,8 +248,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnVender2)
-                            .addComponent(jLabel1)
-                            .addComponent(btnVender3))
+                            .addComponent(jLabel1))
                         .addGap(42, 42, 42))
                     .addComponent(btnVender4, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
@@ -277,9 +273,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
                     .addComponent(btnS3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(203, 203, 203)
-                .addComponent(btnVender3)
-                .addGap(138, 138, 138)
+                .addGap(374, 374, 374)
                 .addComponent(btnVender2)
                 .addGap(138, 138, 138))
         );
@@ -317,7 +311,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                         .addComponent(labelSillaSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -408,22 +402,33 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
             }
         });
 
+        btnTest.setText("test");
+        btnTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(27, 27, 27)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
+                        .addGap(13, 13, 13)
+                        .addComponent(btnTest)
+                        .addGap(18, 18, 18)
                         .addComponent(btnVender)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCancelar)))
@@ -432,19 +437,75 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTest)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        tblVentas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Fecha", "Cliente", "No. Silla", "Valor Venta"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblVentas);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setText("Ventas del día");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -453,19 +514,24 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -502,10 +568,6 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
     private void btnVender2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVender2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVender2ActionPerformed
-
-    private void btnVender3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVender3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVender3ActionPerformed
 
     private void btnVender4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVender4ActionPerformed
         // TODO add your handling code here:
@@ -556,6 +618,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
         venta.setSilla(sillaSeleccionada);
         venta.setValorVenta(Double.valueOf(this.labelPrecio.getText()));
         ventas.add(venta);
+        this.agregarVentaATabla(venta);
 
         this.sillaSeleccionada.cambiarEstado(Estado.OCUPADA);
         this.resolverImagenBoton(this.botonSillaSeleccionada, sillaSeleccionada);
@@ -569,6 +632,34 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
             this.txtNombre.setText(cliente.getNombre());
         }
     }//GEN-LAST:event_txtDocumentoFocusLost
+
+    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
+        Cliente cliente1 = new Cliente("123", "Ana María Ramírez");
+        Cliente cliente2 = new Cliente("456", "Andrés Marulanda");
+        
+        Silla silla6 = this.sillas.get(6);
+        
+        Venta venta1 = new Venta(new Date());
+        venta1.setCliente(cliente1);
+        venta1.setSilla(silla6);
+        venta1.setValorVenta(20_000);
+//        venta1.setValorVenta(20000);
+
+        Silla silla4 = this.sillas.get(4);
+        Venta venta2 = new Venta(new Date());
+        venta2.setCliente(cliente2);
+        venta2.setSilla(silla4);
+        venta2.setValorVenta(52_000);
+
+//        Object[] fila = {"fecha","nombreCliente",100, 10000};
+        Object[] fila = venta1.getDatosComoFila();
+        DefaultTableModel modeloDatos = (DefaultTableModel) this.tblVentas.getModel();
+        modeloDatos.addRow(fila);
+        
+        modeloDatos.addRow(venta2.getDatosComoFila());
+        
+        
+    }//GEN-LAST:event_btnTestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -616,10 +707,10 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton btnS7;
     private javax.swing.JButton btnS8;
     private javax.swing.JButton btnS9;
+    private javax.swing.JButton btnTest;
     private javax.swing.JButton btnVender;
     private javax.swing.JButton btnVender1;
     private javax.swing.JButton btnVender2;
-    private javax.swing.JButton btnVender3;
     private javax.swing.JButton btnVender4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -628,12 +719,16 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelPrecio;
     private javax.swing.JLabel labelSillaSeleccionada;
+    private javax.swing.JTable tblVentas;
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
@@ -741,6 +836,11 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
             }
         }
         return null;
+    }
+
+    private void agregarVentaATabla(Venta venta) {
+        DefaultTableModel modeloDatos = (DefaultTableModel) this.tblVentas.getModel();
+        modeloDatos.addRow(venta.getDatosComoFila());
     }
 }
 
