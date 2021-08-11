@@ -17,40 +17,47 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author ecastrot
  */
 public class CalculadoraTest {
-    
-    private String atributo; 
-    
+
     public CalculadoraTest() {
-        
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-        // Va a ser un código que se ejecute antes de empezar cualquier prueba
-        // Fecha = 01 ene 2021
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-        // Va a ser un código que se ejecute cuando se termino la ejecución de todas las pruebas
-        // Fecha = 10 ago 2021
-    }
-    
-    @BeforeEach
-    public void setUp() {
-        // Va a ser un código que se ejecute antes de cada caso de prueba
-        // Resetear acumulador...
-    }
-    
-    @AfterEach
-    public void tearDown() {
-        // Va a ser un código que se ejecute después de cada caso de prueba
-        // Resetear acumulador...
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @BeforeAll
+    public static void setUpClass() {
+    }
+
+    @AfterAll
+    public static void tearDownClass() {
+    }
+
+    @BeforeEach
+    public void setUp() {
+    }
+
+    @AfterEach
+    public void tearDown() {
+    }
+
+    @Test
+    public void testSumarDosNumeros() {
+        int resultadoSuma = Calculadora.sumar(2,7);
+        assertEquals(9, resultadoSuma);
+    }
+    
+    @Test
+    public void testSumarDosNumerosConUnoNegativo() {
+        int resultadoSuma = Calculadora.sumar(-1,5);
+        assertEquals(4, resultadoSuma, "Se esperaba que la suma diera 4");
+    }
+    
+    @Test
+    public void testSumarTresNumeros() {
+        int resultadoSuma = Calculadora.sumar(2,7,-5);
+        assertEquals(4, resultadoSuma);
+    }
+    
+    @Test
+    public void testSumarDosNumerosConUnoNulo() {
+        int resultadoSuma = Calculadora.sumar(null,7);
+        assertEquals(9, resultadoSuma);
+    }
 }
