@@ -5,11 +5,13 @@
  */
 package com.mintic.poo.swing.cinema.cine.ventas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ecastrot
  */
-public class Cliente {
+public class Cliente implements Serializable{
     
     private String documento;
     private String nombre; 
