@@ -21,6 +21,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
@@ -115,6 +121,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
         btnTest = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnBd = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVentas = new javax.swing.JTable();
@@ -437,12 +444,19 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
             }
         });
 
+        btnBd.setText("BD");
+        btnBd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -464,8 +478,11 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
                                 .addComponent(btnVender)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCancelar))
-                            .addComponent(jButton2))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBd, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,7 +501,9 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(btnBd)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnTest)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -556,7 +575,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -753,6 +772,28 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnBdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBdActionPerformed
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost/cinema";
+            Connection conexion = DriverManager.getConnection(url, "root", "admin");
+            String sentenciaSql = "SELECT * FROM cliente";
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery(sentenciaSql);
+            while (resultado.next()) {
+//                System.out.println("Cliente > " + resultado.getString("idCliente") 
+//                        + " - " + resultado.getString("documento") + " - " + resultado.getString("nombre"));
+                System.out.println("Cliente > " + resultado.getString(1) 
+                        + " - " + resultado.getString(2) + " - " + resultado.getString(3));
+            }
+            conexion.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnBdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -789,6 +830,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBd;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnS1;
     private javax.swing.JButton btnS2;
@@ -919,8 +961,32 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
         boton.setIcon(imagen);
     }
 
+    /**
+     * Busca un cliente por su documento.
+     * @param documento documento con el que se quiere buscar al cliente.
+     * @return instancia de cliente que coincide con el documento recibido, o nulo en caso de que no exista.
+     */
     private Cliente buscarCliente(String documento) {
-        return this.clientes.get(documento);
+//        return this.clientes.get(documento);
+        Cliente clienteEncontrado = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost/cinema";
+            Connection conexion = DriverManager.getConnection(url, "root", "admin");
+            String sentenciaSql = "SELECT * FROM cliente WHERE documento='" + documento + "'";
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery(sentenciaSql);
+            while (resultado.next()) {
+                clienteEncontrado = new Cliente(resultado.getString("documento"), resultado.getString("nombre"));
+                break;
+            }
+            conexion.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clienteEncontrado;
     }
 
     private Venta buscarVenta(Integer noSilla) {
@@ -938,14 +1004,53 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
     }
 
     private void guardarCliente() {
-       try {
-            FileWriter escritor = new FileWriter("misClientes.txt");
-            String clienteTexto = this.clienteSeleccionado.getDocumento() + "," + this.clienteSeleccionado.getNombre() + "\n";
-            escritor.write("Mi primera linea en un archivo");
-            escritor.close();
-        } catch (IOException ex) {
+       guardarClienteEnArchivo();
+       guardarClienteEnBd();
+    }
+    
+    private void guardarClienteEnBd() {
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            String url = "jdbc:mysql://localhost/cinema";
+//            Connection conexion = DriverManager.getConnection(url, "root", "admin");
+//            String sentenciaSql = "INSERT cliente (documento,nombre) VALUES ('" 
+//                    + this.clienteSeleccionado.getDocumento() + "', '" 
+//                    + this.clienteSeleccionado.getNombre() + "');";
+//            Statement sentencia = conexion.createStatement();
+//            sentencia.executeUpdate(sentenciaSql);
+//            conexion.close();
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost/cinema";
+            Connection conexion = DriverManager.getConnection(url, "root", "admin");
+            String sentenciaSql = "INSERT cliente (documento,nombre) VALUES (?,?);";
+            PreparedStatement sentencia = conexion.prepareStatement(sentenciaSql);
+            sentencia.setString(1, this.clienteSeleccionado.getDocumento());
+            sentencia.setString(2, this.clienteSeleccionado.getNombre());
+            sentencia.executeUpdate(sentenciaSql);
+            conexion.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void guardarClienteEnArchivo() {
+//       try {
+//            FileWriter escritor = new FileWriter("misClientes.txt");
+//            String clienteTexto = this.clienteSeleccionado.getDocumento() + "," + this.clienteSeleccionado.getNombre() + "\n";
+//            escritor.write("Mi primera linea en un archivo");
+//            escritor.close();
+//        } catch (IOException ex) {
+//            Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     private void leerClientes() {
@@ -964,5 +1069,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
             Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    
 }
 
