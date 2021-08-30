@@ -1033,7 +1033,7 @@ public class FrmCinema extends javax.swing.JFrame implements ActionListener {
             PreparedStatement sentencia = conexion.prepareStatement(sentenciaSql);
             sentencia.setString(1, this.clienteSeleccionado.getDocumento());
             sentencia.setString(2, this.clienteSeleccionado.getNombre());
-            sentencia.executeUpdate(sentenciaSql);
+            sentencia.executeUpdate();
             conexion.close();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FrmCinema.class.getName()).log(Level.SEVERE, null, ex);
